@@ -1,0 +1,19 @@
+<h1>Companies</h1>
+<ul>
+  <% companies.each do |company| %>
+    <li>
+      <%= company.name %>
+      (<%= company.publicly_traded ? 'Publicly Traded' : 'Not Publicly Traded' %>)
+      - <%= link_to "view", company_path(company) %>
+
+      - <%= link_to "edit", edit_company_path(company) %>
+
+      <!--<% if false %>
+      <% if current_user.can_edit?(company) %>
+        - <%= link_to "edit", edit_company_path(company) %>
+      <% end %>
+      <% end %>-->
+
+    </li>
+  <% end %>
+</ul>

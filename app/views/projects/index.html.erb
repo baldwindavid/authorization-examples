@@ -1,0 +1,12 @@
+<h1>Projects</h1>
+<ul>
+  <% projects.each do |project| %>
+    <li>
+      <%= project.name %>
+      (<%= project.active ? 'ACTIVE' : 'INACTIVE' %>)
+
+      - <%= link_to "view", project_path(project) %>
+      - <%= link_to "edit", edit_project_path(project) %>
+    </li>
+  <% end %>
+</ul>

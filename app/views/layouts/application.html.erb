@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Autho</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+</head>
+  <body>
+
+    <div class="notes">
+      <ul>
+        <li>Secret - before_filter :require_admin</li>
+        <li>Projects - before_filter :authorize_actions!</li>
+        <li>Companies - per action - authorize!(boolean)</li>
+        <li>model - resource</li>
+        <li>model - user</li>
+        <li>view</li>
+      </ul>
+    </div>
+
+    <strong>
+      User:
+      <%= current_user.name %>,
+      Age <%= current_user.age %>,
+      <%= current_user.admin ? 'ADMIN' : 'NOT ADMIN' %>
+    </strong>
+
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "Admin-Only", secret_path %></li>
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= link_to "Companies", companies_path %></li>
+    </ul>
+
+    <% if flash[:alert] %>
+      <div class="error"><%= flash[:alert] %></div>
+    <% end %>
+
+    <%= yield %>
+
+  </body>
+</html>
